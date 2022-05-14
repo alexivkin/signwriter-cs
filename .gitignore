@@ -1,0 +1,12 @@
+<<<<<<< HEAD
+=======
+\!*
+>>>>>>> e2163f5 (first)
+.vscode
+bin
+obj
+*.bak
+<<<<<<< HEAD
+=======
+*.key
+>>>>>>> e2163f5 (first)

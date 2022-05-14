@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project Sdk="Microsoft.NET.Sdk" ToolsVersion="15.0">
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <!-- <AppDesignerFolder>Properties</AppDesignerFolder> -->
+    <RootNamespace>sign</RootNamespace>
+    <AssemblyName>signwriter</AssemblyName>
+    <TargetFramework>net5.0</TargetFramework>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)' == 'Release' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <PublishSingleFile>true</PublishSingleFile>
+    <SelfContained>true</SelfContained>
+    <!-- <RuntimeIdentifier>win-x64</RuntimeIdentifier> -->
+    <PublishTrimmed>true</PublishTrimmed>
+    <IncludeNativeLibrariesForSelfExtract>true</IncludeNativeLibrariesForSelfExtract>
+    <PublishReadyToRun>false</PublishReadyToRun>    <!-- enabling this option will break cross compiling -->
+</PropertyGroup>
+<ItemGroup>
+    <EmbeddedResource Include="osslsigncode" />
+    <EmbeddedResource Include="signtool.exe" />
+</ItemGroup>
+  <Target Name="CopyCustomContent" AfterTargets="AfterBuild">
+    <Copy SourceFiles="signtool.exe;osslsigncode" DestinationFolder="$(OutDir)" />
+  </Target>
+  <!-- <ItemGroup>
+    <PackageReference Include="System.Security.Cryptography.Pkcs" Version="4.6" />
+    </ItemGroup> -->
+</Project>
